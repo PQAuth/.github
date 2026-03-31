@@ -1,66 +1,63 @@
-# PQAuth: Post-Quantum Secure OAuth 2.0 SDK
+# PQAuth
 
-PQAuth is a modular, post-quantum secure software development kit (SDK) for OAuth 2.0 that ensures authorization workflows remain secure against quantum computing threats while maintaining full compatibility with existing standards.
+**Post-Quantum Secure OAuth 2.0 SDK for Go**
 
-## 🎯 Main Objective
-
-To design and develop a modular, post-quantum secure set of SDKs for OAuth 2.0 that enables authorization workflows to remain secure in the quantum era, while preserving compatibility with existing standards and maintaining minimal performance overhead.
-
-## ⚡ Key Features
-
-- **🔐 Post-Quantum Security**: Implements quantum-resistant cryptographic algorithms to protect against future quantum computer attacks
-- **🔄 OAuth 2.0 Compatibility**: Full compliance with OAuth 2.0 specifications and existing ecosystem
-- **🏗️ Modular Architecture**: Flexible SDK design allowing selective implementation of components
-- **⚡ Performance Optimized**: Minimal overhead while maintaining security guarantees
-- **🔧 Drop-in Replacement**: Easy migration from existing OAuth 2.0 implementations
-
-## 🚨 Why Post-Quantum Security Matters
-
-Current OAuth 2.0 implementations rely on cryptographic algorithms (RSA, ECDSA) that will be vulnerable to quantum computers. As quantum computing advances, these systems face increasing security risks:
-
-- **Timeline Risk**: Large-scale quantum computers may arrive sooner than expected
-- **Harvest Now, Decrypt Later**: Attackers are already collecting encrypted data for future decryption
-- **Critical Infrastructure**: OAuth 2.0 secures billions of authentication flows daily
-- **Compliance Requirements**: Emerging regulations require quantum-resistant security measures
-
-## 🚀 Getting Started
-
-
-
-## 📚 Documentation
-
-- 🏗️ **[Architecture Guide](https://docs.pqauth.dev/architecture)** - Technical architecture and design decisions
-- 🔄 **[Migration Guide](https://docs.pqauth.dev/migration)** - Migrating from standard OAuth 2.0
-- 🛡️ **[Security Specifications](https://docs.pqauth.dev/security)** - Cryptographic details and security analysis
-- 💡 **[Examples](https://github.com/PQAuth/examples)** - Sample implementations and use cases
-
-## 🤝 Contributing
-
-We welcome contributions from the community! Here's how you can help:
-
-- 🐛 **Report Issues**: Found a bug? [Open an issue](https://github.com/PQAuth/pqauth-core/issues)
-- 💡 **Feature Requests**: Have an idea? [Start a discussion](https://github.com/PQAuth/pqauth-core/discussions)
-- 🔧 **Code Contributions**: Check our [Contributing Guide](https://github.com/PQAuth/.github/blob/main/CONTRIBUTING.md)
-- 📝 **Documentation**: Help improve our docs and examples
-- 🧪 **Testing**: Help us test against different OAuth 2.0 providers
-
-## 📜 License
-
-PQAuth is released under the [MIT License](LICENSE). This allows for both commercial and non-commercial use while ensuring the project remains open source.
-
-## 🏢 Enterprise Support
-
-For enterprise deployments, custom integrations, or commercial support:
-
-- 📧 Email: enterprise@pqauth.dev
-- 💼 [Enterprise Solutions](https://pqauth.dev/enterprise)
-- 🎯 Custom training and consultation available
-
-## 🌟 Community & Support
-
-- 💬 **[Discord Community](https://discord.gg/pqauth)** - Real-time chat and support
-- 📧 **support@pqauth.dev** - General support and questions
+PQAuth is a modular SDK that brings post-quantum cryptographic algorithms to OAuth 2.0 — securing authorization workflows against quantum computing threats while remaining fully compatible with existing standards and drop-in with existing infrastructure.
 
 ---
 
-**Ready to secure your OAuth 2.0 implementation for the quantum era?** [Get started with PQAuth today!](https://docs.pqauth.org/getting-started)
+## 🧩 Modules
+
+| Module | Description |
+|---|---|
+| [`pqauth-core`](https://github.com/PQAuth/pqauth-core) | Cryptographic primitives, JWT sign/verify, JWKS management, key generation, token blacklist |
+| [`pqauth-svr-core`](https://github.com/PQAuth/pqauth-svr-core) | Storage and cache abstractions — MongoDB, in-memory, and custom backends |
+| [`pqauth-auth-svr`](https://github.com/PQAuth/pqauth-auth-svr) | OAuth 2.0 Authorization Server — all grant types, PKCE, OIDC, algorithm negotiation |
+| [`pqauth-resource-svr`](https://github.com/PQAuth/pqauth-resource-svr) | Resource server token validation — local keys, JWKS, and introspection modes |
+| [`pqauth-client`](https://github.com/PQAuth/pqauth-client) | OAuth 2.0 client SDK — token acquisition, auto-refresh, server discovery |
+
+---
+
+## ⚡ Key Features
+
+- **🔐 Post-Quantum Security** — ML-DSA (CRYSTALS-Dilithium), SLH-DSA (SPHINCS+), and Falcon signing via NIST FIPS 204/205 standards
+- **🔄 Full OAuth 2.0 Compatibility** — Authorization Code, Client Credentials, Device Authorization, JWT Bearer, Token Exchange, PAR, PKCE, OIDC
+- **🏗️ Modular Architecture** — Use individual modules or the full stack; swap storage backends via interfaces
+- **⚡ Algorithm Negotiation** — Server and client negotiate the best mutually supported algorithm per request
+- **🔧 Framework-Agnostic** — Wire to any Go HTTP framework (Fiber, Chi, net/http, Gin)
+
+---
+
+## 🚨 Why Post-Quantum?
+
+Current OAuth 2.0 implementations rely on RSA and ECDSA — algorithms that will be broken by sufficiently powerful quantum computers. Attackers are already harvesting encrypted traffic today for future decryption (**harvest now, decrypt later**). OAuth 2.0 secures billions of authentication flows daily, making it a high-value target.
+
+PQAuth lets you migrate to quantum-resistant signing now, with classical fallback support for gradual rollout.
+
+---
+
+## 🚀 Getting Started
+
+```bash
+go get github.com/PQAuth/pqauth-core
+go get github.com/PQAuth/pqauth-auth-svr
+go get github.com/PQAuth/pqauth-resource-svr
+go get github.com/PQAuth/pqauth-client
+```
+
+Full documentation at **[docs.pqauth.dev](https://docs.pqauth.dev)**
+
+---
+
+## 📚 Resources
+
+- 📖 **[Documentation](https://docs.pqauth.dev)** — Setup guides, configuration reference, grant type walkthroughs
+- 📊 **[Benchmarks](https://benchmark.pqauth.dev)** — Interactive performance comparison across all algorithms
+- 🔐 **[Why PQC?](https://docs.pqauth.dev/pqc/why-pqc)** — The case for post-quantum OAuth 2.0
+- 🔄 **[Migration Guide](https://docs.pqauth.dev/security/migration-guide)** — Phased migration from classical to post-quantum
+
+---
+
+## 📜 License
+
+MIT
