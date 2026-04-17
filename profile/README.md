@@ -40,6 +40,7 @@ PQAuth lets you migrate to quantum-resistant signing now, with classical fallbac
 
 ```bash
 go get github.com/PQAuth/pqauth-core
+go get github.com/PQAuth/pqauth-svr-core
 go get github.com/PQAuth/pqauth-auth-svr
 go get github.com/PQAuth/pqauth-resource-svr
 go get github.com/PQAuth/pqauth-client
